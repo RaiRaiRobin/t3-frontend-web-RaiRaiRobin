@@ -1,10 +1,10 @@
 # Your Project Title
 
-Name: Your full name here
+Name: Robin Rai
 
-CollegeID: Your college ID
+CollegeID: 160501
 
-Batch: Jan19A/19B/19C/19D
+Batch: Jan19C
 
 
 # Frontend code architecture
