@@ -20,7 +20,6 @@ function readURL(input) {
 
 $(document).ready(function(){
 
-
     // User Register Submit
         $(document).on('submit', '#UserRegisterForm', function(event){
             event.preventDefault();
@@ -28,7 +27,8 @@ $(document).ready(function(){
             var password = $('#UserNewPassword').val();
             var retypePassword = $('#UserRetypeNewPassword').val();
             if (password == retypePassword) {
-                const UserRegisterFormData = {
+                var userRegisterFormData = {
+                    // key         value
                     FirstName : $('#UserFirstName').val(),
                     MiddleName : $('#UserMiddleName').val(),
                     LastName : $('#UserLastName').val(),
@@ -37,25 +37,46 @@ $(document).ready(function(){
                     DOB : $('#UserDob').val(),
                     Email : $('#UserEmail').val(),
                     Phone : $('#UserPhone').val(),
-                    Photo : $('#UserPhoto').[0].files[0],
                     Password : password
                 }
-                console.log(UserRegisterFormData);
+                var userRegisterFormPhoto = {Photo : $('#UserPhoto')[0].files[0]}
+                var formdata = new FormData();
+                    // formdata.append(1,userRegisterFormPhoto);
+                for(key in userRegisterFormPhoto){
+                    formdata.append(key,userRegisterFormPhoto[key]);
+                }
+                console.log(formdata);  
+                // ajax for storing photo of user
                 $.ajax({
-                    url: 'http://localhost:3000/user/register',
-                    type: 'POST',
+                    url: 'http://localhost:3000/user/register/userPhoto',
+                    method: 'POST',
                     dataType: 'json',
-                    contentType: 'application/json',
+                    contentType: false,
                     processData: false,
-                    data: JSON.stringify(UserRegisterFormData),
+                    data: formdata,
                     success : function(result, status) {
                         console.log(result);
                         console.log(status);
-                        // $('#message').html(result.message)
+                        // console.log(result.message)
                     },
                     error : function(jqXHR, status) {
-                        console.log(jqXHR.responseJSON.message);
+                        // console.log(jqXHR.responseJSON.message);
                     }
+                });
+                // ajax for registerning data of user
+                $.ajax({
+                    url: 'http://localhost:3000/user/register/text',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(userRegisterFormData),
+                    success : function(result,status){
+                        console.log(result);
+                        console.log(status);
+                        // console.log(result.message);
+                    },
+                    error : function (jqXHR,status){ 
+                        // console.log(jqXHR.responseJSON.message);
+                    }       
                 });
             }
             else {
