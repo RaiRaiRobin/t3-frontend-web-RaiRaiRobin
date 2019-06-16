@@ -15,7 +15,7 @@
 				<form id="UserRegisterForm" enctype="multipart/form-data" method="POST">
 					<div>
 						<label for="UserFirstName">First Name:</label>
-						<input class="form-control" id="UserFirstName" type="text" name="UserFirstName" required>
+						<input class="form-control" id="UserFirstName" type="text" name="UserFirstName" >
 					</div>
 					<div>
 						<label for="UserMiddleName">Middle Name:</label>
@@ -23,7 +23,7 @@
 					</div>
 					<div>
 						<label for="UserLastName">Last Name:</label>
-						<input id="UserLastName" class="form-control" type="text" name="UserLastName" required>
+						<input id="UserLastName" class="form-control" type="text" name="UserLastName" >
 					</div>
 					<div>
 						<div class="form-check-inline">
@@ -33,7 +33,7 @@
 						</div>
 						<div class="form-check-inline">
 						  <label class="form-check-label">
-						    <input type="radio" class="form-check-input" value="male" name="UserGender" required>Male
+						    <input type="radio" class="form-check-input" value="male" name="UserGender" >Male
 						  </label>
 						</div>
 						<div class="form-check-inline">
@@ -49,32 +49,32 @@
 					</div>
 					<div>
 						<label for="UserAddress">Address:</label>
-						<input id="UserAddress" class="form-control" type="text" name="UserAddress" required>
+						<input id="UserAddress" class="form-control" type="text" name="UserAddress" >
 					</div>
 					<div>
 						<label for="UserDob">Date-of-Birth:</label>
-						<input id="UserDob" class="form-control" type="date" name="UserDob" required>
+						<input id="UserDob" class="form-control" type="date" name="UserDob" >
 					</div>
 					<div>
 						<label for="UserEmail">Email:</label>
-						<input id="UserEmail" class="form-control" type="Email" name="UserEmail" required> 
+						<input id="UserEmail" class="form-control" type="Email" name="UserEmail" > 
 					</div>
 					<div>
 						<label for="UserPhone">Phone No.:</label>
-						<input id="UserPhone" class="form-control" type="text" name="UserPhone" placeholder="+977-XXXXXXXXXX" required>
+						<input id="UserPhone" class="form-control" type="text" name="UserPhone" placeholder="+977-XXXXXXXXXX" >
 					</div>
 					<div>
 						<label for="UserPhoto">Photo:</label>
-						<input id="UserPhoto" class="form-control" type="file" name="UserPhoto" accept="image/x-png,image/jpeg,image/jpg" onchange="readURL(this);" required>
+						<input id="UserPhoto" class="form-control" type="file" name="UserPhoto" accept="image/x-png,image/jpeg,image/jpg" onchange="readURL(this);" >
 						<img id="ShowUserImage" src="">
 					</div>
 					<div>
 						<label for="UserNewPassword">New Password:</label>
-						<input id="UserNewPassword" class="form-control" type="Password" name="UserNewPassword" required>
+						<input id="UserNewPassword" class="form-control" type="Password" name="UserNewPassword" >
 					</div>
 					<div>
 						<label for="UserRetypeNewPassword">Retype Password:</label>
-						<input id="UserRetypeNewPassword" class="form-control" type="Password" name="UserRetypeNewPassword" required>
+						<input id="UserRetypeNewPassword" class="form-control" type="Password" name="UserRetypeNewPassword" >
 					</div>
 					<div>
 						<button id="UserRegisterSubmit" class="btn btn-success float-right" type="submit">Save</button>

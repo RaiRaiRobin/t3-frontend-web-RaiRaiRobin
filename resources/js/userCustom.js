@@ -39,49 +39,31 @@ $(document).ready(function(){
                     Phone : $('#UserPhone').val(),
                     Password : password
                 }
-                var userRegisterFormPhoto = {Photo : $('#UserPhoto')[0].files[0]}
-                var formdata = new FormData();
-                    // formdata.append(1,userRegisterFormPhoto);
-                for(key in userRegisterFormPhoto){
-                    formdata.append(key,userRegisterFormPhoto[key]);
+                console.log(userRegisterFormData);
+                $.ajax({
+                url: 'http://localhost:3001/user/register/userFormData',
+                method : 'post',
+                contentType: 'application/json',
+                data: JSON.stringify(userRegisterFormData),
+                success : function(result,status){
+                    console.log(result);
+                    console.log(status);
+                },
+                error : function (jqXHR,status){ 
+                    // console.log(jqXHR.responseJSON.message);
+                // $('#message').html(jqXHR.responseJSON.message);
+
                 }
-                console.log(formdata);  
-                // ajax for storing photo of user
-                $.ajax({
-                    url: 'http://localhost:3000/user/register/userPhoto',
-                    method: 'POST',
-                    dataType: 'json',
-                    contentType: false,
-                    processData: false,
-                    data: formdata,
-                    success : function(result, status) {
-                        console.log(result);
-                        console.log(status);
-                        // console.log(result.message)
-                    },
-                    error : function(jqXHR, status) {
-                        // console.log(jqXHR.responseJSON.message);
-                    }
-                });
-                // ajax for registerning data of user
-                $.ajax({
-                    url: 'http://localhost:3000/user/register/text',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(userRegisterFormData),
-                    success : function(result,status){
-                        console.log(result);
-                        console.log(status);
-                        // console.log(result.message);
-                    },
-                    error : function (jqXHR,status){ 
-                        // console.log(jqXHR.responseJSON.message);
-                    }       
-                });
+
+            });  
+  
+              
             }
             else {
                 alert('Passwords did not match')
             }
+
+
         });
 
 
@@ -89,6 +71,32 @@ $(document).ready(function(){
 
 
     });
+
+
+// register profile picture upload function
+function registerprofile(){
+            var userRegisterFormPhoto = $('#UserPhoto')[0].files[0];
+                var formdata = new FormData();
+                formdata.append("UserPhoto", userRegisterFormPhoto);
+                // ajax for storing photo of user
+                $.ajax({
+                    url: 'http://localhost:3000/user/register/userPhoto',
+                    method : 'post',
+                    contentType : false,
+                    processData: false,
+                    data : formdata,
+                    dataType: 'json',
+                    success : function(result, status) {
+                        console.log(result);
+                        console.log(status);
+                        // console.log(result.message)
+                    },
+                    error : function(jqXHR, status) {
+                        // console.log(jqXHR.responseJSON.message);
+                        alert('upload failed')
+                    }
+                });
+}
 
 
 
