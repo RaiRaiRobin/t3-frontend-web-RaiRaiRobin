@@ -15,7 +15,7 @@
 				<form id="UserRegisterForm" enctype="multipart/form-data" method="POST">
 					<div>
 						<label for="UserFirstName">First Name:</label>
-						<input class="form-control" id="UserFirstName" type="text" name="UserFirstName" >
+						<input class="form-control" id="UserFirstName" type="text" name="UserFirstName" required>
 					</div>
 					<div>
 						<label for="UserMiddleName">Middle Name:</label>
@@ -23,7 +23,7 @@
 					</div>
 					<div>
 						<label for="UserLastName">Last Name:</label>
-						<input id="UserLastName" class="form-control" type="text" name="UserLastName" >
+						<input id="UserLastName" class="form-control" type="text" name="UserLastName" required>
 					</div>
 					<div>
 						<div class="form-check-inline">
@@ -49,19 +49,19 @@
 					</div>
 					<div>
 						<label for="UserAddress">Address:</label>
-						<input id="UserAddress" class="form-control" type="text" name="UserAddress" >
+						<input id="UserAddress" class="form-control" type="text" name="UserAddress" required>
 					</div>
 					<div>
 						<label for="UserDob">Date-of-Birth:</label>
-						<input id="UserDob" class="form-control" type="date" name="UserDob" >
+						<input id="UserDob" class="form-control" type="date" name="UserDob" required>
 					</div>
 					<div>
 						<label for="UserEmail">Email:</label>
-						<input id="UserEmail" class="form-control" type="Email" name="UserEmail" > 
+						<input id="UserEmail" class="form-control" type="Email" name="UserEmail" required> 
 					</div>
 					<div>
 						<label for="UserPhone">Phone No.:</label>
-						<input id="UserPhone" class="form-control" type="text" name="UserPhone" placeholder="+977-XXXXXXXXXX" >
+						<input id="UserPhone" class="form-control" type="text" name="UserPhone" placeholder="+977-XXXXXXXXXX" required>
 					</div>
 					<div>
 						<label for="UserPhoto">Photo:</label>
@@ -70,11 +70,11 @@
 					</div>
 					<div>
 						<label for="UserNewPassword">New Password:</label>
-						<input id="UserNewPassword" class="form-control" type="Password" name="UserNewPassword" >
+						<input id="UserNewPassword" class="form-control" type="Password" name="UserNewPassword" required>
 					</div>
 					<div>
 						<label for="UserRetypeNewPassword">Retype Password:</label>
-						<input id="UserRetypeNewPassword" class="form-control" type="Password" name="UserRetypeNewPassword" >
+						<input id="UserRetypeNewPassword" class="form-control" type="Password" name="UserRetypeNewPassword" required>
 					</div>
 					<div>
 						<button id="UserRegisterSubmit" class="btn btn-success float-right" type="submit">Save</button>
