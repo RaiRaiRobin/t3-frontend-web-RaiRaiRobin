@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/bs4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/userCustom.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron userRegisterJumbotorn">
+            <h2 class="userRegisterText">Login</h2>
+            <div class="userRegisterformDiv">
+                <form id="UserLoginForm" enctype="multipart/form-data" method="POST">
+                    <div>
+                        <label for="LoginEmail" class="userRegisterLabel">Email:</label>
+                        <input class="form-control" id="LoginEmail" type="text" name="LoginEmail" required>
+                    </div>
+                    <div>
+                        <label for="LoginPassword" class="userRegisterLabel">Password:</label>
+                        <input id="LoginPassword" class="form-control" type="Password" name="LoginPassword" required>
+                    </div>
+                    <div>
+                        <button id="UserLoginSubmit" class="btn btn-success userRegisterLabel RegisterSubmitButton" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../resources/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../resources/bs4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/userCustom.js"></script>
+</body>
+
+</html>

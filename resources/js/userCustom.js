@@ -16,36 +16,53 @@ function readURL(input) {
 }
 
 
+$(document).on('change', '#UserPhoto', function(event) {
+    event.preventDefault();
+    if ($('#UserPhoto').val() == '') {
+        $('#ShowUserImage').attr('hidden', 'hidden');
+    } else {
+        $('#ShowUserImage').removeAttr('hidden');
+    }
+});
+
+
 $(document).ready(function() {
 
     // User Register Submit
     $(document).on('submit', '#UserRegisterForm', function(event) {
         event.preventDefault();
-        // first uploads register profile photo
-        var userRegisterFormPhoto = $('#UserPhoto')[0].files[0];
-        var formdata = new FormData();
-        formdata.append("UserPhoto", userRegisterFormPhoto);
-        // ajax for storing photo of user
-        $.ajax({
-            url: 'http://localhost:3000/user/register/userPhoto',
-            method: 'post',
-            contentType: false,
-            processData: false,
-            data: formdata,
-            dataType: 'json',
-            success: function(result, status) {
-                console.log(result);
-                console.log(status);
-                // console.log(result.name);
-                registerprofiletext(result.name);
+        var password = $('#UserNewPassword').val();
+        var retypePassword = $('#UserRetypeNewPassword').val();
+        if (password == retypePassword) {
+            // first uploads register profile photo
+            var userRegisterFormPhoto = $('#UserPhoto')[0].files[0];
+            var formdata = new FormData();
+            formdata.append("UserPhoto", userRegisterFormPhoto);
+            // ajax for storing photo of user
+            $.ajax({
+                url: 'http://localhost:3000/user/register/userPhoto',
+                method: 'post',
+                contentType: false,
+                processData: false,
+                data: formdata,
+                dataType: 'json',
+                success: function(result, status) {
+                    console.log(result);
+                    console.log(status);
+                    // console.log(result.name);
+                    registerprofiletext(result.name);
 
-                // console.log(result.message)
-            },
-            error: function(jqXHR, status) {
-                // console.log(jqXHR.responseJSON.message);
-                console.log('upload failed');
-            }
-        });
+                    // console.log(result.message)
+                },
+                error: function(jqXHR, status) {
+                    // console.log(jqXHR.responseJSON.message);
+                    console.log('upload failed');
+                }
+            });
+        } else {
+            alert('Check retype password');
+            $('#UserRetypeNewPassword').focus();
+        }
 
     });
 
@@ -83,7 +100,6 @@ function registerprofiletext(name) {
 
     var gender = $("input[name='UserGender']:checked").val();
     var password = $('#UserNewPassword').val();
-    var retypePassword = $('#UserRetypeNewPassword').val();
     var userRegisterFormData = {
         // key         value
         FirstName: $('#UserFirstName').val(),
@@ -118,3 +134,38 @@ function registerprofiletext(name) {
 
 
 }
+
+
+
+// User Login
+$(document).ready(function() {
+    $(document).on('submit', '#UserLoginForm', function(event) {
+        event.preventDefault();
+        const myFormData = {
+            email: $('#LoginEmail').val(),
+            password: $('#LoginPassword').val()
+        }
+
+        $.ajax({
+            // v1 is the version , users is the route in backend 
+            url: 'http://localhost:3000/user/login',
+            method: 'POST',
+            contentType: 'application/json',
+            // headers: { 'Authorization' : window.localStorage.getItem('token')},
+            data: JSON.stringify(myFormData),
+            success: function(result, status) {
+                // console.log(result);
+                // $('#message').html(result.message);
+                // window.location.href = "usersdashboard.html";
+                console.log(result.token);
+                window.localStorage.setItem('token', result.token);
+                window.localStorage.setItem('token', 'result.token');
+            },
+            error: function(jqXHR, status) {
+                //  console.log(jqXHR.responseJSON.message);
+                $('#message').html(jqXHR.responseJSON.message);
+            }
+        });
+
+    });
+});
