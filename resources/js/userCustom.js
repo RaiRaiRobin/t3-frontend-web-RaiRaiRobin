@@ -125,9 +125,12 @@ function registerprofiletext(name) {
         },
         error: function(jqXHR, status) {
             console.log(jqXHR);
+            // console.log(jqXHR.status);
+            // console.log(jqXHR.responseJSON.message);
             console.log(status);
             // $('#message').html(jqXHR.responseJSON.message);
             console.log('data upload failed');
+            alert(jqXHR.responseJSON.message);
 
         }
     });
@@ -149,7 +152,7 @@ $(document).ready(function() {
         $.ajax({
             // v1 is the version , users is the route in backend 
             url: 'http://localhost:3000/user/login',
-            method: 'POST',
+            method: 'post',
             contentType: 'application/json',
             // headers: { 'Authorization' : window.localStorage.getItem('token')},
             data: JSON.stringify(myFormData),
@@ -160,6 +163,7 @@ $(document).ready(function() {
                 console.log(result.token);
                 window.localStorage.setItem('token', result.token);
                 window.localStorage.setItem('token', 'result.token');
+                window.location.href = "../user/userDashboard.html";
             },
             error: function(jqXHR, status) {
                 //  console.log(jqXHR.responseJSON.message);
