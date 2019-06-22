@@ -166,8 +166,11 @@ $(document).ready(function() {
                 window.location.href = "../user/userDashboard.html";
             },
             error: function(jqXHR, status) {
-                //  console.log(jqXHR.responseJSON.message);
-                $('#message').html(jqXHR.responseJSON.message);
+                 // console.log(jqXHR.responseJSON.message);
+                // $('#message').html(jqXHR.responseJSON.message);
+                alert(jqXHR.responseJSON.message);
+                $('#LoginPassword').val('');
+                $('#LoginPassword').focus();
             }
         });
 
