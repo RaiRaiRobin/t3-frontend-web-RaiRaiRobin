@@ -163,7 +163,7 @@ $(document).ready(function() {
                 console.log(result.token);
                 window.localStorage.setItem('token', result.token);
                 window.localStorage.setItem('token', 'result.token');
-                window.location.href = "../user/userDashboard.html";
+                window.location.href = "../user/dashboard.html";
             },
             error: function(jqXHR, status) {
                  // console.log(jqXHR.responseJSON.message);

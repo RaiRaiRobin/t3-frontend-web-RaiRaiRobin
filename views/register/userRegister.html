@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+    <link rel="icon" type="image/png" href="../../public/images/icons/ico.png" />
+    <link rel="stylesheet" type="text/css" href="../../resources/bs4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/userCustom.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron userRegisterJumbotorn">
+            <h2 class="userRegisterText">Register</h2>
+            <div class="userRegisterformDiv">
+                <form id="UserRegisterForm" enctype="multipart/form-data" method="POST">
+                    <div>
+                        <label for="UserFirstName" class="userRegisterLabel">First Name:</label>
+                        <input class="form-control" id="UserFirstName" type="text" name="UserFirstName" required>
+                    </div>
+                    <div>
+                        <label for="UserMiddleName" class="userRegisterLabel">Middle Name:</label>
+                        <input id="UserMiddleName" class="form-control" type="text" name="UserMiddleName">
+                    </div>
+                    <div>
+                        <label for="UserLastName" class="userRegisterLabel">Last Name:</label>
+                        <input id="UserLastName" class="form-control" type="text" name="UserLastName" required>
+                    </div>
+                    <div>
+                        <div class="form-check-inline userRegisterLabel">
+                            <label class="form-check-label">
+                                Gender:
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" value="male" name="UserGender" required>Male
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" value="female" name="UserGender">Female
+                            </label>
+                        </div>
+                        <div class="form-check-inline disabled">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" value="other" name="UserGender">Other
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="UserAddress" class="userRegisterLabel">Address:</label>
+                        <input id="UserAddress" class="form-control" type="text" name="UserAddress" required>
+                    </div>
+                    <div>
+                        <label for="UserDob" class="userRegisterLabel">Date-of-Birth:</label>
+                        <input id="UserDob" class="form-control" type="date" name="UserDob" required>
+                    </div>
+                    <div>
+                        <label for="UserEmail" class="userRegisterLabel">Email:</label>
+                        <input id="UserEmail" class="form-control" type="Email" name="UserEmail" required>
+                    </div>
+                    <div>
+                        <label for="UserPhone" class="userRegisterLabel">Phone No.:</label>
+                        <input id="UserPhone" class="form-control" type="text" name="UserPhone" placeholder="+977-XXXXXXXXXX" required>
+                    </div>
+                    <div>
+                        <label for="UserPhoto" class="userRegisterLabel">Photo:</label>
+                        <input id="UserPhoto" class="form-control" type="file" name="UserPhoto" accept="image/x-png,image/jpeg,image/jpg" onchange="readURL(this);">
+                        <img id="ShowUserImage" src="" hidden>
+                    </div>
+                    <div>
+                        <label for="UserNewPassword" class="userRegisterLabel">New Password:</label>
+                        <input id="UserNewPassword" class="form-control" type="Password" name="UserNewPassword" required>
+                    </div>
+                    <div>
+                        <label for="UserRetypeNewPassword" class="userRegisterLabel">Retype Password:</label>
+                        <input id="UserRetypeNewPassword" class="form-control" type="Password" name="UserRetypeNewPassword" required>
+                    </div>
+                    <div>
+                        <button id="UserRegisterSubmit" class="btn btn-success userRegisterLabel RegisterSubmitButton" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../resources/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../resources/bs4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/userCustom.js"></script>
+</body>
+
+</html>
