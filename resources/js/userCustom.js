@@ -159,14 +159,28 @@ $(document).ready(function() {
             success: function(result, status) {
                 // console.log(result);
                 // $('#message').html(result.message);
-                // window.location.href = "usersdashboard.html";
-                console.log(result.token);
+                // console.log(result.token);
                 window.localStorage.setItem('token', result.token);
-                window.localStorage.setItem('token', 'result.token');
-                window.location.href = "../user/dashboard.html";
+                console.log(result.info);
+                window.sessionStorage.setItem('user_id', result.info.id);
+                window.sessionStorage.setItem('user_first_name', result.info.first_name);
+                window.sessionStorage.setItem('user_middle_name', result.info.middle_name);
+                window.sessionStorage.setItem('user_last_name', result.info.last_name);
+                window.sessionStorage.setItem('user_gender', result.info.gender);
+                window.sessionStorage.setItem('user_email', result.info.email);
+                window.sessionStorage.setItem('user_address', result.info.address);
+                window.sessionStorage.setItem('user_dob', result.info.dob);
+                window.sessionStorage.setItem('user_phone', result.info.phone);
+                window.sessionStorage.setItem('user_photo', result.info.photo);
+                window.sessionStorage.setItem('user_user_type', result.info.user_type);
+                window.sessionStorage.setItem('user_createdAt', result.info.createdAt);
+                window.sessionStorage.setItem('user_updatedAt', result.info.updatedAt);
+                // var ses = window.sessionStorage.getItem('token');
+                // sessionStorage.clear();
+                window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/user/dashboard.html";
             },
             error: function(jqXHR, status) {
-                 // console.log(jqXHR.responseJSON.message);
+                // console.log(jqXHR.responseJSON.message);
                 // $('#message').html(jqXHR.responseJSON.message);
                 alert(jqXHR.responseJSON.message);
                 $('#LoginPassword').val('');
@@ -174,5 +188,57 @@ $(document).ready(function() {
             }
         });
 
+    });
+});
+
+
+
+// edit user profile text
+$(document).ready(function() {
+    $(document).on('submit', '#EditUserProfileFormText', function(event) {
+        event.preventDefault();
+        var userProfileEditFormData = {
+            // key         value
+            FirstName: $('#editUserFirstName').val(),
+            MiddleName: $('#editUserMiddleName').val(),
+            LastName: $('#editUserLastName').val(),
+            Address: $('#editUserAddress').val(),
+            DOB: $('#editUserDob').val(),
+            Phone: $('#editUserPhone').val(),
+            Id: window.sessionStorage.getItem('user_id')
+        }
+        // console.log(userProfileEditFormData);
+        $.ajax({
+            url: 'http://localhost:3000/user/edit/userProfileData',
+            method: 'put',
+            contentType: 'application/json',
+            data: JSON.stringify(userProfileEditFormData),
+            success: function(result, status) {
+                console.log(result);
+                console.log(status);
+                alert(result.message);
+            },
+            error: function(jqXHR, status) {
+                console.log(jqXHR);
+                // console.log(jqXHR.status);
+                // console.log(jqXHR.responseJSON.message);
+                console.log(status);
+                // $('#message').html(jqXHR.responseJSON.message);
+                console.log('Profile edit failed');
+                alert(jqXHR.responseJSON.message);
+            }
+        });
+    });
+});
+
+
+
+// user logout
+$(document).ready(function() {
+    $(document).on('click', '#userLogOutButton', function(event) {
+        event.preventDefault();
+        window.localStorage.clear();
+        window.sessionStorage.clear();
+        window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/userLogin.html";
     });
 });
