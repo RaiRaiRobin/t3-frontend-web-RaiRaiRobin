@@ -4,3 +4,13 @@
 .userRegisterJumbotorn{margin-top: 1%;}
 .userRegisterLabel{margin-top: 1.5%;}
 .RegisterSubmitButton{width: 70%; margin-left: 15%;}
+.no-border{
+	border : none !important;
+}
+input#editDescription{
+	height: 150px !important;
+	border-bottom: none;
+}
+#ShowUserImage{
+	height: 15%; width: 15%;
+}

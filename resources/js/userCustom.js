@@ -161,7 +161,7 @@ $(document).ready(function() {
                 // $('#message').html(result.message);
                 // console.log(result.token);
                 window.localStorage.setItem('token', result.token);
-                console.log(result.info);
+                // console.log(result.info);
                 window.sessionStorage.setItem('user_id', result.info.id);
                 window.sessionStorage.setItem('user_first_name', result.info.first_name);
                 window.sessionStorage.setItem('user_middle_name', result.info.middle_name);
@@ -212,11 +212,27 @@ $(document).ready(function() {
             url: 'http://localhost:3000/user/edit/userProfileData',
             method: 'put',
             contentType: 'application/json',
+            headers: { 'Authorization': window.localStorage.getItem('token') },
             data: JSON.stringify(userProfileEditFormData),
             success: function(result, status) {
-                console.log(result);
+                // console.log(result);
                 console.log(status);
+                // console.log(result.info);
+                window.sessionStorage.setItem('user_id', result.info.id);
+                window.sessionStorage.setItem('user_first_name', result.info.first_name);
+                window.sessionStorage.setItem('user_middle_name', result.info.middle_name);
+                window.sessionStorage.setItem('user_last_name', result.info.last_name);
+                window.sessionStorage.setItem('user_gender', result.info.gender);
+                window.sessionStorage.setItem('user_email', result.info.email);
+                window.sessionStorage.setItem('user_address', result.info.address);
+                window.sessionStorage.setItem('user_dob', result.info.dob);
+                window.sessionStorage.setItem('user_phone', result.info.phone);
+                window.sessionStorage.setItem('user_photo', result.info.photo);
+                window.sessionStorage.setItem('user_user_type', result.info.user_type);
+                window.sessionStorage.setItem('user_createdAt', result.info.createdAt);
+                window.sessionStorage.setItem('user_updatedAt', result.info.updatedAt);
                 alert(result.message);
+                window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/user/user.html";
             },
             error: function(jqXHR, status) {
                 console.log(jqXHR);
@@ -224,7 +240,7 @@ $(document).ready(function() {
                 // console.log(jqXHR.responseJSON.message);
                 console.log(status);
                 // $('#message').html(jqXHR.responseJSON.message);
-                console.log('Profile edit failed');
+                // console.log('Profile edit failed');
                 alert(jqXHR.responseJSON.message);
             }
         });
@@ -240,5 +256,15 @@ $(document).ready(function() {
         window.localStorage.clear();
         window.sessionStorage.clear();
         window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/userLogin.html";
+    });
+});
+
+
+// open modal in table list
+$(document).ready(function() {
+    $(document).on('click', '.openmodalclick', function(event){
+        event.preventDefault();
+        $('#myModal').modal('toggle');
+
     });
 });

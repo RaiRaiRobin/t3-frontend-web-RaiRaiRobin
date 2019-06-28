@@ -20,7 +20,7 @@ if (token != null) {
         url: 'http://localhost:3000/token/verify',
         method: 'post',
         dataType: 'json',
-        headers: { authorization: 'Bearer ' + window.localStorage.getItem('token') },
+        headers: { authorization: 'Bearer '+window.localStorage.getItem('token') },
         success: function(result, status) {
             window.sessionStorage.setItem('user_id', result.info.id);
             window.sessionStorage.setItem('user_first_name', result.info.first_name);
@@ -35,7 +35,6 @@ if (token != null) {
             window.sessionStorage.setItem('user_user_type', result.info.user_type);
             window.sessionStorage.setItem('user_createdAt', result.info.createdAt);
             window.sessionStorage.setItem('user_updatedAt', result.info.updatedAt);
-            window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/user/dashboard.html";
         },
         error: function(jqXHR, status) {
             // console.log(jqXHR);
@@ -45,4 +44,6 @@ if (token != null) {
             window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/userLogin.html";
         }
     })
+} else {
+    window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/userLogin.html";
 }

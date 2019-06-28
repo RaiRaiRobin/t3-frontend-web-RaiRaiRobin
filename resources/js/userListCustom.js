@@ -11,20 +11,7 @@ var email = window.sessionStorage.getItem('user_email');
 var address = window.sessionStorage.getItem('user_address');
 var phone = window.sessionStorage.getItem('user_phone');
 var photo = window.sessionStorage.getItem('user_photo');
-$('#userProfileName').html(first_name + ' ' + middle_name + ' ' + last_name);
-$('#userProfileType').html(user_type);
-$('#userProfileImage').attr('src', 'http://localhost:3000/images/profile/' + photo);
-$('#openUserImageInNewTab').attr('href', 'http://localhost:3000/images/profile/' + photo);
 $('#userNavbarProfileName').html(first_name + ' ' + middle_name + ' ' + last_name);
-
-$('#editUserFirstName').val(first_name);
-$('#editUserMiddleName').val(middle_name);
-$('#editUserLastName').val(last_name);
-$('#editUserEmail').val(email);
-$('#editUserPhone').val(phone);
-$('#editUserAddress').val(address);
-$('#editUserGender').val(gender);
-$('#editUserDob').val(dob);
 
 
 if (token != null) {
@@ -33,7 +20,7 @@ if (token != null) {
         url: 'http://localhost:3000/token/verify',
         method: 'post',
         dataType: 'json',
-        headers: { authorization: 'Bearer '+window.localStorage.getItem('token') },
+        headers: { authorization: 'Bearer ' + window.localStorage.getItem('token') },
         success: function(result, status) {
             window.sessionStorage.setItem('user_id', result.info.id);
             window.sessionStorage.setItem('user_first_name', result.info.first_name);
@@ -56,7 +43,60 @@ if (token != null) {
             alert('Invalid Token');
             window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/userLogin.html";
         }
-    })
+    });
+
+    // get all userlist
+    $.ajax({
+        url: 'http://localhost:3000/user/list',
+        method: 'get',
+        dataType: 'json',
+        headers: { authorization: 'Bearer ' + window.localStorage.getItem('token') },
+        success: function(result, status) {
+            // console.log(result.allUser[0]);
+            for (key in result.allUser) {
+                // console.log(result[key].userName);
+                // console.log(result.allUser[key].dob);
+                var date = result.allUser[key].dob;
+                var arr1 = date.split('-');
+                var arr2 = arr1[1].split(' ');
+                var arr3 = arr1[2].split(' ');
+                var dob = arr1[0] + ', ' + arr2 + ', ' + arr3;
+
+                function calculate_age(dob) {
+                    var diff_ms = Date.now() - dob.getTime();
+                    var age_dt = new Date(diff_ms);
+                    return Math.abs(age_dt.getUTCFullYear() - 1970);
+                }
+                var datee = calculate_age(new Date(1998, 9, 23))
+                // console.log(datee);
+                $('#patientListTable').append('<tr class="openmodalclick"><td>' + result.allUser[key].id + '</td>\
+                                  <td class="text-primary">' + result.allUser[key].first_name + ' ' + result.allUser[key].middle_name + ' ' + result.allUser[key].last_name + '</td>\
+                                  <td>\
+                                     ' + result.allUser[key].email + '\
+                                  </td>\
+                                  <td>\
+                                     ' + result.allUser[key].address + '\
+                                  </td>\
+                                  <td>\
+                                     ' + result.allUser[key].phone + '\
+                                  </td>\
+                                  <td>\
+                                    ' + datee + '\
+                                  </td>\
+                                  <td>\
+                                    ' + result.allUser[key].gender + '\
+                                  </td>\
+                                </tr>');
+            }
+        },
+        error: function(jqXHR, status) {
+            console.log(jqXHR);
+            // console.log(jqXHR.status);
+            // console.log(jqXHR.responseJSON.message);
+            console.log(status);
+            // alert(jqXHR.responseJSON.message);
+        }
+    });
 } else {
     window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/userLogin.html";
 }
