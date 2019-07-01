@@ -35,14 +35,14 @@ if (token != null) {
             window.sessionStorage.setItem('user_user_type', result.info.user_type);
             window.sessionStorage.setItem('user_createdAt', result.info.createdAt);
             window.sessionStorage.setItem('user_updatedAt', result.info.updatedAt);
-            window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/user/dashboard.html";
+            window.location.href = "../user/dashboard.html";
         },
         error: function(jqXHR, status) {
             // console.log(jqXHR);
             window.localStorage.clear();
             window.sessionStorage.clear();
             alert('Invalid Token');
-            window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/userLogin.html";
+            window.location.href = "userLogin.html";
         }
     })
 }

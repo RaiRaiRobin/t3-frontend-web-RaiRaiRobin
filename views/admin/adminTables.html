@@ -37,21 +37,21 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item  ">
-                        <a class="nav-link" href="./dashboard.html">
+                        <a class="nav-link" href="./adminDashboard.html">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./user.html">
+                        <a class="nav-link" href="./addUser.html">
                             <i class="material-icons">person</i>
-                            <p>User Profile</p>
+                            <p>Add User</p>
                         </a>
                     </li>
                     <li class="nav-item active ">
-                        <a class="nav-link" href="./tables.html">
+                        <a class="nav-link" href="./adminTables.html">
                             <i class="material-icons">content_paste</i>
-                            <p>Table List</p>
+                            <p>User List</p>
                         </a>
                     </li>
                     <li class="nav-item ">
@@ -98,7 +98,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">Table List</a>
+                        <a class="navbar-brand" href="#pablo">User Lists</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -196,6 +196,86 @@
                                                 </th>
                                             </thead>
                                             <tbody id="patientListTable">
+                                                <!-- user info list -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">Nurse List</h4>
+                                    <p class="card-category"> Here is a list of nurse</p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class=" text-primary">
+                                                <th>
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    Name
+                                                </th>
+                                                <th>
+                                                    Email
+                                                </th>
+                                                <th>
+                                                    Address
+                                                </th>
+                                                <th>
+                                                    Phone
+                                                </th>
+                                                <th>
+                                                    Age
+                                                </th>
+                                                <th>
+                                                    Gender
+                                                </th>
+                                            </thead>
+                                            <tbody id="nurseListTable">
+                                                <!-- user info list -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">Doctor List</h4>
+                                    <p class="card-category"> Here is a list of doctor</p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class=" text-primary">
+                                                <th>
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    Name
+                                                </th>
+                                                <th>
+                                                    Email
+                                                </th>
+                                                <th>
+                                                    Address
+                                                </th>
+                                                <th>
+                                                    Phone
+                                                </th>
+                                                <th>
+                                                    Age
+                                                </th>
+                                                <th>
+                                                    Gender
+                                                </th>
+                                            </thead>
+                                            <tbody id="doctorListTable">
                                                 <!-- user info list -->
                                             </tbody>
                                         </table>
@@ -748,8 +828,8 @@
     <!-- For modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="../../resources/js/userCustom.js"></script>
-    <script src="../../resources/js/userListCustom.js"></script>
+    <script src="../../resources/js/adminCustom.js"></script>
+    <script src="../../resources/js/adminTables.js"></script>
 </body>
 
 </html>

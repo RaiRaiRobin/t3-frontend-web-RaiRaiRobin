@@ -54,9 +54,9 @@ if (token != null) {
             window.localStorage.clear();
             window.sessionStorage.clear();
             alert('Invalid Token');
-            window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/userLogin.html";
+            window.location.href = "../login/userLogin.html";
         }
     })
 } else {
-    window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/userLogin.html";
+    window.location.href = "../login/userLogin.html";
 }

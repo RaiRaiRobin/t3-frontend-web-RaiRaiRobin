@@ -122,14 +122,18 @@ function registerprofiletext(name) {
         success: function(result, status) {
             console.log(result);
             console.log(status);
+            window.localStorage.clear();
+            window.sessionStorage.clear();
+            window.localStorage.setItem('token', result.token);
+            window.location.href = "../user/dashboard.html";
         },
         error: function(jqXHR, status) {
-            console.log(jqXHR);
+            // console.log(jqXHR);
             // console.log(jqXHR.status);
-            // console.log(jqXHR.responseJSON.message);
             console.log(status);
+            console.log(jqXHR.responseJSON.message);
             // $('#message').html(jqXHR.responseJSON.message);
-            console.log('data upload failed');
+            // console.log('data upload failed');
             alert(jqXHR.responseJSON.message);
 
         }
@@ -177,7 +181,7 @@ $(document).ready(function() {
                 window.sessionStorage.setItem('user_updatedAt', result.info.updatedAt);
                 // var ses = window.sessionStorage.getItem('token');
                 // sessionStorage.clear();
-                window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/user/dashboard.html";
+                window.location.href = "../user/dashboard.html";
             },
             error: function(jqXHR, status) {
                 // console.log(jqXHR.responseJSON.message);
@@ -232,7 +236,7 @@ $(document).ready(function() {
                 window.sessionStorage.setItem('user_createdAt', result.info.createdAt);
                 window.sessionStorage.setItem('user_updatedAt', result.info.updatedAt);
                 alert(result.message);
-                window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/user/user.html";
+                window.location.href = "./user.html";
             },
             error: function(jqXHR, status) {
                 console.log(jqXHR);
@@ -255,14 +259,14 @@ $(document).ready(function() {
         event.preventDefault();
         window.localStorage.clear();
         window.sessionStorage.clear();
-        window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/userLogin.html";
+        window.location.href = "../views/login/userLogin.html";
     });
 });
 
 
 // open modal in table list
 $(document).ready(function() {
-    $(document).on('click', '.openmodalclick', function(event){
+    $(document).on('click', '.openmodalclick', function(event) {
         event.preventDefault();
         $('#myModal').modal('toggle');
 
