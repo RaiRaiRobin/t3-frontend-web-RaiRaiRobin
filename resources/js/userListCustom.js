@@ -35,6 +35,9 @@ if (token != null) {
             window.sessionStorage.setItem('user_user_type', result.info.user_type);
             window.sessionStorage.setItem('user_createdAt', result.info.createdAt);
             window.sessionStorage.setItem('user_updatedAt', result.info.updatedAt);
+            if (result.info.user_type == 'nurse' || result.info.user_type == 'doctor') {
+                getallpatientlist();
+            }
         },
         error: function(jqXHR, status) {
             // console.log(jqXHR);
@@ -45,6 +48,14 @@ if (token != null) {
         }
     });
 
+    
+} else {
+    window.location.href = "../login/userLogin.html";
+}
+
+
+
+function getallpatientlist(){
     // get all userlist
     $.ajax({
         url: 'http://localhost:3000/user/list',
@@ -52,6 +63,7 @@ if (token != null) {
         dataType: 'json',
         headers: { authorization: 'Bearer ' + window.localStorage.getItem('token') },
         success: function(result, status) {
+            $('#patientListTable').empty();
             // console.log(result.allUser[0]);
             for (key in result.allUser) {
                 // console.log(result[key].userName);
@@ -97,6 +109,4 @@ if (token != null) {
             // alert(jqXHR.responseJSON.message);
         }
     });
-} else {
-    window.location.href = "../login/userLogin.html";
 }

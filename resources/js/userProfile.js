@@ -14,6 +14,9 @@ var photo = window.sessionStorage.getItem('user_photo');
 $('#userProfileName').html(first_name + ' ' + middle_name + ' ' + last_name);
 $('#userProfileType').html(user_type);
 $('#userProfileImage').attr('src', 'http://localhost:3000/images/profile/' + photo);
+$('#editPhoto').attr('src', 'http://localhost:3000/images/profile/' + photo);
+$('#editPhoto').attr('data-id', 'http://localhost:3000/images/profile/' + photo);
+$('#editPhoto').attr('data-name', photo);
 $('#openUserImageInNewTab').attr('href', 'http://localhost:3000/images/profile/' + photo);
 $('#userNavbarProfileName').html(first_name + ' ' + middle_name + ' ' + last_name);
 

@@ -17,6 +17,7 @@
   <link href="../../resources/dashboard/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../../resources/dashboard/demo/demo.css" rel="stylesheet" />
+  <link href="../../resources/css/userCustom.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -173,19 +174,19 @@
                       <div class="col-md-5">
                         <div class="form-group">
                           <label class="bmd-label-floating">First Name</label>
-                          <input type="text" id="editUserFirstName" class="form-control" required>
+                          <input type="text" id="editUserFirstName" class="form-control" required disabled>
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
                           <label class="bmd-label-floating">Middle Name</label>
-                          <input id="editUserMiddleName" type="text" class="form-control">
+                          <input id="editUserMiddleName" type="text" class="form-control disabled" disabled>
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Last Name</label>
-                          <input id="editUserLastName" type="text" class="form-control" required>
+                          <input id="editUserLastName" type="text" class="form-control" required disabled> 
                         </div>
                       </div>
                     </div>
@@ -199,7 +200,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Phone</label>
-                          <input id="editUserPhone" type="text" class="form-control" required>
+                          <input id="editUserPhone" type="text" class="form-control" required disabled>
                         </div>
                       </div>
                     </div>
@@ -207,7 +208,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Address</label>
-                          <input id="editUserAddress" type="text" class="form-control" required>
+                          <input id="editUserAddress" type="text" class="form-control" required disabled>
                         </div>
                       </div>
                     </div>
@@ -221,15 +222,16 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Date of Birth</label>
-                          <input id="editUserDob" type="text" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                          <input id="editUserDob" type="text" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" required disabled>
                         </div>
                       </div>
-                      <!-- <div class="col-md-4">
+                      <div id="profilepictureedit" class="col-md-4" hidden>
                         <div class="form-group">
-                          <label class="bmd-label-floating">Postal Code</label>
-                          <input type="text" class="form-control">
+                          <img id="editPhoto" src="">
+                          <label for="editprofilepicture" class="bmd-label-floating">Change profile picture</label>
+                          <input id="editprofilepicture" type="file" onchange="readURLL(this);" accept="image/x-png,image/jpeg,image/jpg">
                         </div>
-                      </div> -->
+                      </div>
                     </div>
                     <!-- <div class="row">
                       <div class="col-md-12">
@@ -242,7 +244,9 @@
                         </div>
                       </div>
                     </div> -->
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                    <button id="editProfileButton" type="button" class="btn btn-primary pull-right">Edit Profile</button>
+                    <button id="cancelEditProfileButton" type="button" class="btn btn-danger pull-left" hidden>Cancel</button>
+                    <button id="submitEdit" type="submit" class="btn btn-info pull-right" hidden>Update Profile</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>
