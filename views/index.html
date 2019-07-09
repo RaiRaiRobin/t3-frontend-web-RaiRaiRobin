@@ -1,151 +1,159 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>Patient Manager</title>
-	<meta name="author" content="Robin">
-	<meta name="description" content="I am developing a new website">
-	<meta name="keywords" content="My First Page, web developer in Nepal">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Information Manager</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+<link rel="stylesheet" href="../resources/css/customcss.css">
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"> -->
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
 
-	<link rel="stylesheet" type="text/css" href="../resources/bs4/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../resources/css/custom.css">
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("../public/images/medical.jpg");
+  min-height: 75%;
+}
 
-	<link rel="stylesheet" href="CSS/bootstrap-4.0.0-dist/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-</head>
+.menu {
+  display: none;
+}
+</style>
 <body>
 
+<!-- Links (sit on top) -->
+<div class="w3-top" style="background-color: #8e24aa">
+  <div class="w3-row w3-padding w3-black" style="background-color: #8e24aa">
+    <div class="w3-col s3">
+      <a href="#" class="w3-button w3-block w3-black">HOME</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#menu" class="w3-button w3-block w3-black">SERVICES</a>
+    </div>
 
-<!--header-->
-<header >
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-2">
-			<img src="../public/images/logo.png" class="logo" alt="logo">
-			</div>
-			<div class="col-sm-6"><p class="logo-span">Patient Information Manager</p></div>
-			<div class="col-sm-4"></div>
-		</div>
-	</div>
+    <div class="w3-col s3">
+      <a href="login/userLogin.html" class="w3-button w3-block w3-black">LOGIN</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="register/Register.html" class="w3-button w3-block w3-black">REGISTER</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+    <span class="w3-tag">Open from 6am to 5pm</span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <!-- <span class="w3-text-white" style="font-size:90px">the<br>Cafe</span> -->
+  </div>
+  <div class="w3-display-bottomright w3-center w3-padding-large">
+    <span class="w3-text-white">15 Adr street, 5015</span>
+  </div>
 </header>
 
-<!--nav-->
-<section class="custom-nav">
-	<div class="container" style="">
-		<div class="row">
-		<div class="col-sm-12">
-			<ul class="custom-ul">
-				<li><a href="#home" class="active">Home</a></li>
-				<li><a href="#news" class="">News</a></li>
-				<li><a href="contact.html" class="">Contact</a></li>
-				<li><a href="about.html" class="">About</a></li>
-			</ul>
-			</div>
-		</div>
-	</div>
-</section>
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
 
-<!--banner-->
-<section>
-	<div id="demo" class="carousel slide" data-ride="carousel">
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="../public/images/1.jpg" class="car" alt="Nepal" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>Nepal</h3>
-        <p>We had such a great time in Nepal!</p>
-      </div>   
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE HOSPITAL</span></h5>
+    We at Hospital are dedicated to providing best possible health care at affordable prices. We are a hundred bedded hospital with latest equipment and an I.C.U. We specialise in Medicine, Surgery, Obstetrics and Gynaecology, Paediatrics, Orthopaedics, ENT, Ophthalmology, Cardiology, Hepatology, Neurology, Urology, Psychiatrics, Dermatology, Physiotherapy, Dentistry and Anaesthesiology. We also have a Pathology department, Major/Minor OT, Post Op Care, Pain Clinic, X-Ray, Ultrasound, Colour Doppler, Echocardiography, E.C.G., Cytology, Endoscopy, EEG, Family Planning Services and a Pharmacy.
+    <div class="w3-panel w3-leftbar w3-light-grey">
+      <p><i>"We believe in prevention better than cure."</i></p>
     </div>
-    <div class="carousel-item">
-      <img src="../public/images/2.jpg" class="car" alt="Nepal" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>Nepal</h3>
-        <p>Thank you, Nepal!</p>
-      </div>   
-    </div>
-    <div class="carousel-item">
-      <img src="../public/images/3.jpg" class="car" alt="Nepal" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>Nepal</h3>
-        <p>We love the Big Apple!</p>
-      </div>   
-    </div>
+    <img src="../public/images/opd.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <p><strong>Opening hours:</strong> everyday from 6am to 5pm.</p>
+    <p><strong>Address:</strong> 15 Adr street, 5015, NY</p>
   </div>
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
 </div>
-</section>
 
-<!--section-->
-<section class="sec">
-	<div class="container halfsection">
-		<div class="row">
-			<div class="col-lg-6">
-				  <div class="card" style="width:550px">
-    <div class="card-body">
-      <h4 class="card-title">John Doe</h4>
-      <p class="card-text">Some example text some example text. John Doe is an architect and engineer Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum impedit consectetur sed neque natus facere sint, non nulla numquam, distinctio doloremque corporis veniam expedita praesentium quasi omnis sit, eaque nemo.</p>
+<!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">THE SERVICES</span></h5>
+
+    <div class="w3-row w3-center w3-card w3-padding">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
+        <div class="w3-col s6 tablink">OPD</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
+        <div class="w3-col s6 tablink">IPD</div>
+      </a>
     </div>
+
+    <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Dental services</h5>
+      <p class="w3-text-grey">We provide better dental cure than any other with modern technology</p><br>
+
+      <h5>USG</h5>
+      <p class="w3-text-grey">Video Xray at the demand</p><br>
+
+      <h5>Eye care</h5>
+      <p class="w3-text-grey">Better vision with our vision in curing you.</p><br>
+
+      <h5>Vaccination</h5>
+      <p class="w3-text-grey">Regular and appropriate immunization helps to increase the defence mechanism</p><br>
+
+    </div>
+
+    <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Psychiatrics</h5>
+      <p class="w3-text-grey">We believe the mental condition to be the foremost care.</p><br>
+
+      <h5>Child Delivery</h5>
+      <p class="w3-text-grey">Emergency delivery service</p><br>
+
+      <h5>Physiotherapy</h5>
+      <p class="w3-text-grey">Alignment of the necessary parts of the body where it is supposed to be</p><br>
+
+      <h5>Dermatology</h5>
+      <p class="w3-text-grey">Our care your skin</p><br>
+
+      <h5>Cardiology</h5>
+      <p class="w3-text-grey">Our services to make you beat the best</p>
+    </div>
+    <img src="../public/images/medical1.jpg" style="width:100%;max-width:1000px;margin-top:32px;">
   </div>
-			</div>
-			
-			<div class="col-lg-6">
-				<div class="row"><div class="card" style="width:550px">
-    <div class="card-body">
-      <h4 class="card-title">John Doe</h4>
-      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-    </div>
-  </div></div>
-				<div class="row sec"><div class="card" style="width:550px">
-    <div class="card-body">
-      <h4 class="card-title">John Doe</h4>
-      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-    </div>
-  </div></div>
-  
-			</div>
-		</div>
-	</div>
-</section>
+</div>
 
-<!--footer-->
-<footer class="foot"><div class="txtt"><p>Connect Socially with Us</p></div>
-<div class="container">
-<div class="row">
-	<div class="col-sm-3">
-		<div class="fafa1"><a href="#"><i class="fa fa-facebook-square fa1"></i><p class="cap1">Follow on facebook</p></a></div>
-	</div>
-	<div class="col-sm-3">
-		<div class="fafa2"><a href="#"><i class="fa fa-twitter-square fa2"></i><p class="cap2">Follow on twitter</p></a></div>
-	</div>
-	<div class="col-sm-3">
-		<div class="fafa3"><a href="#"><i class="fa fa-instagram fa3"></i><p class="cap3">Follow on instagram</p></a></div>
-	</div>
-	<div class="col-sm-3">
-		<div class="fafa4"><a href="#"><i class="fa fa-pinterest-square fa4"></i><p class="cap4" style="margin-bottom:0px;">Follow on pinterest</p></a></div>
-	</div>
+<!-- Contact/Area Container -->
+
+<!-- End page content -->
 </div>
-</div>
-	<div class="bott">
-		<p>© &nbsp copyright</p>
-	</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <p>Powered by Robin Design</p>
 </footer>
 
-<script type="text/javascript" src="../resources/jquery/jquery.js"></script>
-<script type="text/javascript" src="../resources/bs4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../resources/js/custom.js"></script>
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+
 </body>
 </html>
