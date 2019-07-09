@@ -9,5 +9,7 @@ Batch: Jan19C
 
 # Frontend code architecture
 
-Provide a brief description of your front end code architecture including folder structure, API consumption, etc.
+All the web front end files are stored in various different folders.
+here we have resources, public views folder and about.html, index.html,contact.html file. resources folder contains js, css, jquery files and folder whereas views contains admin, login,register and user files
+
 
