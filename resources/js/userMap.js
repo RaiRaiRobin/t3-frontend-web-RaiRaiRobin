@@ -1,3 +1,4 @@
+
 var token = window.localStorage.getItem('token');
 
 var id = window.sessionStorage.getItem('user_id');
@@ -11,23 +12,7 @@ var email = window.sessionStorage.getItem('user_email');
 var address = window.sessionStorage.getItem('user_address');
 var phone = window.sessionStorage.getItem('user_phone');
 var photo = window.sessionStorage.getItem('user_photo');
-$('#userProfileName').html(first_name + ' ' + middle_name + ' ' + last_name);
-$('#userProfileType').html(user_type);
-$('#userProfileImage').attr('src', 'http://localhost:3000/images/profile/' + photo);
-$('#editPhoto').attr('src', 'http://localhost:3000/images/profile/' + photo);
-$('#editPhoto').attr('data-id', 'http://localhost:3000/images/profile/' + photo);
-$('#editPhoto').attr('data-name', photo);
-$('#openUserImageInNewTab').attr('href', 'http://localhost:3000/images/profile/' + photo);
 $('#userNavbarProfileName').html(first_name + ' ' + middle_name + ' ' + last_name);
-
-$('#editUserFirstName').val(first_name);
-$('#editUserMiddleName').val(middle_name);
-$('#editUserLastName').val(last_name);
-$('#editUserEmail').val(email);
-$('#editUserPhone').val(phone);
-$('#editUserAddress').val(address);
-$('#editUserGender').val(gender);
-$('#editUserDob').val(dob);
 
 
 if (token != null) {
@@ -55,12 +40,10 @@ if (token != null) {
                 $('#nurseSearchBar').removeAttr('hidden');
                 $('#navnurse').removeAttr('hidden');
                 $('#checkupRecords').removeAttr('hidden');
-                // getallpatientlist();
             } else if (result.info.user_type == 'doctor') {
                 $('#nurseSearchBar').attr('hidden', 'hidden');
                 $('#vandoctor').removeAttr('hidden');
                 $('#checkupRecords').removeAttr('hidden');
-                // getallpatientcheckuplist();
             } else {
                 $('#tableList').attr('hidden', 'hidden');
                 $('#PatientCheckuppList').removeAttr('hidden');
@@ -74,6 +57,7 @@ if (token != null) {
             window.location.href = "../login/userLogin.html";
         }
     });
+
 
 } else {
     window.location.href = "../login/userLogin.html";

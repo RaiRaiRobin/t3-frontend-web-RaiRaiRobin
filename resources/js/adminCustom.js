@@ -71,7 +71,7 @@ $(document).ready(function() {
         event.preventDefault();
         window.localStorage.clear();
         window.sessionStorage.clear();
-        window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/userLogin.html";
+        window.location.href = "file:///home/robin/Documents/WebApiAssignmentProject/t3-frontend-web-RaiRaiRobin/views/login/adminLogin.html";
     });
 });
 
@@ -88,50 +88,22 @@ $(document).ready(function() {
             dataType: 'json',
             headers: { authorization: 'Bearer ' + window.localStorage.getItem('token') },
             success: function(result, status) {
-                // console.log(result.userInfo[0].first_name);
-                // console.log(result.allUser[0]);
-                // for (key in result.allUser) {
-                //     // console.log(result[key].userName);
-                //     // console.log(result.allUser[key].dob);
-                //     var date = result.allUser[key].dob;
-                //     var arr1 = date.split('-');
-                //     var arr2 = arr1[1].split(' ');
-                //     var arr3 = arr1[2].split(' ');
-                //     var dob = arr1[0] + ', ' + arr2 + ', ' + arr3;
-
-                //     function calculate_age(dob) {
-                //         var diff_ms = Date.now() - dob.getTime();
-                //         var age_dt = new Date(diff_ms);
-                //         return Math.abs(age_dt.getUTCFullYear() - 1970);
-                //     }
-                //     var datee = calculate_age(new Date(1998, 9, 23))
-                //     // console.log(datee);
-                //     $('#patientListTable').append('<tr class="openmodalclick" data-id="' + result.allUser[key].id + '"><td>' + result.allUser[key].id + '</td>\
-                //                       <td class="text-primary">' + result.allUser[key].first_name + ' ' + result.allUser[key].middle_name + ' ' + result.allUser[key].last_name + '</td>\
-                //                       <td>\
-                //                          ' + result.allUser[key].email + '\
-                //                       </td>\
-                //                       <td>\
-                //                          ' + result.allUser[key].address + '\
-                //                       </td>\
-                //                       <td>\
-                //                          ' + result.allUser[key].phone + '\
-                //                       </td>\
-                //                       <td>\
-                //                         ' + datee + '\
-                //                       </td>\
-                //                       <td>\
-                //                         ' + result.allUser[key].gender + '\
-                //                       </td>\
-                //                     </tr>');
-                // }
+                console.log(result.userInfo);
+                $('#editUserFirstName').val(result.userInfo.first_name);
+                $('#editUserMiddleName').val(result.userInfo.middle_name);
+                $('#editUserLastName').val(result.userInfo.last_name);
+                $('#editUserEmail').val(result.userInfo.email);
+                $('#editUserPhone').val(result.userInfo.phone);
+                $('#editUserAddress').val(result.userInfo.address);
+                $('#editUserGender').val(result.userInfo.gender);
+                $('#editUserDob').val(result.userInfo.dob);
+                $('#editPhoto').attr('src', 'http://localhost:3000/images/profile/' + result.userInfo.photo);
                 $('#myModal').modal('toggle');
             },
             error: function(jqXHR, status) {
-                console.log(jqXHR);
                 // console.log(jqXHR.status);
-                // console.log(jqXHR.responseJSON.message);
                 console.log(status);
+                console.log(jqXHR.responseJSON.message);
                 // alert(jqXHR.responseJSON.message);
             }
         });
@@ -139,7 +111,136 @@ $(document).ready(function() {
 });
 
 
+$(document).ready(function() {
+    $(document).on('submit', '#AddUserRegisterForm', function(event) {
+        event.preventDefault();
+        var password = $('#UserNewPassword').val();
+        var retypePassword = $('#UserRetypeNewPassword').val();
+        if (password == retypePassword) {
+            // first uploads register profile photo
+            var userRegisterFormPhoto = $('#UserPhoto')[0].files[0];
+            var formdata = new FormData();
+            formdata.append("UserPhoto", userRegisterFormPhoto);
+            // ajax for storing photo of user
+            $.ajax({
+                url: 'http://localhost:3000/user/register/userPhoto',
+                method: 'post',
+                contentType: false,
+                processData: false,
+                data: formdata,
+                dataType: 'json',
+                success: function(result, status) {
+                    // console.log(result);
+                    console.log(status);
+                    // alert(result.name);
+                    // console.log(result.name);
+                    registerprofiletextt(result.name);
+
+                    // console.log(result.message)
+                },
+                error: function(jqXHR, status) {
+                    // console.log(jqXHR.responseJSON.message);
+                    console.log('upload failed');
+                }
+            });
+        } else {
+            alert('Check retype password');
+            $('#UserRetypeNewPassword').focus();
+        }
+    });
 
 
+    // delete user
+    $(document).on('click', '.deleteUser', function(event) {
+        event.preventDefault();
+        var r = confirm("Delete user!");
+        if (r == true) {
+            var id = $(this).attr('data-id');
+            $.ajax({
+                url: 'http://localhost:3000/user/delete/' + id,
+                method: 'delete',
+                contentType: 'application/json',
+                headers: { authorization: 'Bearer ' + window.localStorage.getItem('token') },
+                // data: JSON.stringify(userRegisterFormData),
+                success: function(result, status) {
+                    console.log(status);
+                    alert(result.message);
+                    window.location.href = "./adminTables.html";
+                },
+                error: function(jqXHR, status) {
+                    console.log(status);
+                    console.log(jqXHR.responseJSON.message);
+                    alert(jqXHR.responseJSON.message);
+                }
+            });
+        }
+    });
+});
 
 
+// register profile text
+function registerprofiletextt(name) {
+    var gender = $("input[name='UserGender']:checked").val();
+    var password = $('#UserNewPassword').val();
+    var userRegisterFormData = {
+        // key         value
+        FirstName: $('#UserFirstName').val(),
+        MiddleName: $('#UserMiddleName').val(),
+        LastName: $('#UserLastName').val(),
+        Gender: gender,
+        Address: $('#UserAddress').val(),
+        DOB: $('#UserDob').val(),
+        Email: $('#UserEmail').val(),
+        Phone: $('#UserPhone').val(),
+        UserType: $('#UserType').val(),
+        Photo: name,
+        Password: password
+    }
+    // console.log(userRegisterFormData);
+    $.ajax({
+        url: 'http://localhost:3000/user/register/userFormDataa',
+        method: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify(userRegisterFormData),
+        success: function(result, status) {
+            // console.log(result);
+            console.log(status);
+            alert(result.message);
+            window.location.href = "./addUser.html";
+        },
+        error: function(jqXHR, status) {
+            // console.log(jqXHR);
+            // console.log(jqXHR.status);
+            console.log(status);
+            console.log(jqXHR.responseJSON.message);
+            // $('#message').html(jqXHR.responseJSON.message);
+            // console.log('data upload failed');
+            alert(jqXHR.responseJSON.message);
+        }
+    });
+}
+
+
+// delete checkup
+$(document).ready(function(){
+    $(document).on('click', '.deleteCheckup', function(event) {
+        event.preventDefault();
+        var id = $(this).attr('data-id');
+        $.ajax({
+                url: 'http://localhost:3000/checkup/delete/' + id,
+                method: 'delete',
+                contentType: 'application/json',
+                headers: { authorization: 'Bearer ' + window.localStorage.getItem('token') },
+                success: function(result, status) {
+                    console.log(status);
+                    alert(result.message);
+                    window.location.href = "./adminCheckupList.html";
+                },
+                error: function(jqXHR, status) {
+                    console.log(status);
+                    console.log(jqXHR.responseJSON.message);
+                    alert(jqXHR.responseJSON.message);
+                }
+            });
+    });
+});

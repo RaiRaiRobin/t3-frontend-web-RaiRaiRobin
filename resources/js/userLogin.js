@@ -35,7 +35,7 @@ if (token != null) {
             window.sessionStorage.setItem('user_user_type', result.info.user_type);
             window.sessionStorage.setItem('user_createdAt', result.info.createdAt);
             window.sessionStorage.setItem('user_updatedAt', result.info.updatedAt);
-            window.location.href = "../user/dashboard.html";
+            window.location.href = "../user/user.html";
         },
         error: function(jqXHR, status) {
             // console.log(jqXHR);

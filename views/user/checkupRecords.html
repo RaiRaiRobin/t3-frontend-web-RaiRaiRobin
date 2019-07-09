@@ -42,19 +42,19 @@
                             <p>User Profile</p>
                         </a>
                     </li>
-                    <li id="tableList" class="nav-item active">
+                    <li id="tableList" class="nav-item ">
                         <a class="nav-link" href="./tables.html">
                             <i class="material-icons">content_paste</i>
                             <p>Checkup</p>
                         </a>
                     </li>
-                    <li id="PatientCheckuppList" class="nav-item" hidden>
+                    <li id="PatientCheckuppList" class="nav-item active" hidden>
                         <a class="nav-link" href="./patientRecord.html">
                             <i class="material-icons">content_paste</i>
                             <p>Patient record</p>
                         </a>
                     </li>
-                    <li id="checkupRecords" class="nav-item" hidden>
+                    <li id="checkupRecords" class="nav-item active" hidden>
                         <a class="nav-link" href="./checkupRecords.html">
                             <i class="material-icons">content_paste</i>
                             <p>All Checkup Records</p>
@@ -144,43 +144,13 @@
                                 <div class="card-header card-header-primary">
                                     <h4 class="card-title ">Patient List</h4>
                                     <p class="card-category"> Here is a list of patient</p>
-                                    <div id="nurseSearchBar" class="input-group no-border float-right patientlistsearchbar">
-                                        <input id="patieltListSearchBar" type="text" value="" class="form-control" placeholder="Search by name">
-                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                            <i class="material-icons">search</i>
-                                            <div class="ripple-container"></div>
-                                        </button>
-                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-hover">
-                                            <thead id="navnurse" hidden class=" text-primary">
+                                            <thead id="navnurse" class=" text-primary">
                                                 <th>
                                                     ID
-                                                </th>
-                                                <th>
-                                                    Name
-                                                </th>
-                                                <th>
-                                                    Email
-                                                </th>
-                                                <th>
-                                                    Address
-                                                </th>
-                                                <th>
-                                                    Phone
-                                                </th>
-                                                <th>
-                                                    Age
-                                                </th>
-                                                <th>
-                                                    Gender
-                                                </th>
-                                            </thead>
-                                            <thead id="vandoctor" class=" text-primary" hidden>
-                                                <th>
-                                                    Patient ID
                                                 </th>
                                                 <th>
                                                     Name
@@ -189,7 +159,7 @@
                                                     BP
                                                 </th>
                                                 <th>
-                                                    Temperature
+                                                    Body Temp
                                                 </th>
                                                 <th>
                                                     Sugar
@@ -201,10 +171,16 @@
                                                     Cholesterol
                                                 </th>
                                                 <th>
-                                                    Date & Time
+                                                    Prescription
+                                                </th>
+                                                <th>
+                                                    Description
+                                                </th>
+                                                <th>
+                                                    Checked at
                                                 </th>
                                             </thead>
-                                            <tbody id="patientListTable">
+                                            <tbody id="patientCheckListTable">
                                                 <!-- user info list -->
                                             </tbody>
                                         </table>
@@ -220,8 +196,8 @@
                     <nav class="float-left">
                         <ul>
                             <li>
-                                <a href="https://www.creative-tim.com">
-                                    Creative Tim
+                                <a href="#">
+                                    Robin Rai
                                 </a>
                             </li>
                             <li>
@@ -252,7 +228,6 @@
             </footer>
         </div>
     </div>
-    
     <!-- modal -->
     <!-- The Modal -->
     <div class="modal fade" id="myModal">
@@ -587,7 +562,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../../resources/js/userCustom.js"></script>
-    <script src="../../resources/js/userListCustom.js"></script>
+    <script src="../../resources/js/checkupRecords.js"></script>
 </body>
 
 </html>

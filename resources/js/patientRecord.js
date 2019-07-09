@@ -1,3 +1,4 @@
+
 var token = window.localStorage.getItem('token');
 
 var id = window.sessionStorage.getItem('user_id');
@@ -11,23 +12,7 @@ var email = window.sessionStorage.getItem('user_email');
 var address = window.sessionStorage.getItem('user_address');
 var phone = window.sessionStorage.getItem('user_phone');
 var photo = window.sessionStorage.getItem('user_photo');
-$('#userProfileName').html(first_name + ' ' + middle_name + ' ' + last_name);
-$('#userProfileType').html(user_type);
-$('#userProfileImage').attr('src', 'http://localhost:3000/images/profile/' + photo);
-$('#editPhoto').attr('src', 'http://localhost:3000/images/profile/' + photo);
-$('#editPhoto').attr('data-id', 'http://localhost:3000/images/profile/' + photo);
-$('#editPhoto').attr('data-name', photo);
-$('#openUserImageInNewTab').attr('href', 'http://localhost:3000/images/profile/' + photo);
 $('#userNavbarProfileName').html(first_name + ' ' + middle_name + ' ' + last_name);
-
-$('#editUserFirstName').val(first_name);
-$('#editUserMiddleName').val(middle_name);
-$('#editUserLastName').val(last_name);
-$('#editUserEmail').val(email);
-$('#editUserPhone').val(phone);
-$('#editUserAddress').val(address);
-$('#editUserGender').val(gender);
-$('#editUserDob').val(dob);
 
 
 if (token != null) {
@@ -55,15 +40,16 @@ if (token != null) {
                 $('#nurseSearchBar').removeAttr('hidden');
                 $('#navnurse').removeAttr('hidden');
                 $('#checkupRecords').removeAttr('hidden');
-                // getallpatientlist();
+                getallpatientlist();
             } else if (result.info.user_type == 'doctor') {
                 $('#nurseSearchBar').attr('hidden', 'hidden');
                 $('#vandoctor').removeAttr('hidden');
                 $('#checkupRecords').removeAttr('hidden');
-                // getallpatientcheckuplist();
+                getallpatientcheckuplist();
             } else {
                 $('#tableList').attr('hidden', 'hidden');
                 $('#PatientCheckuppList').removeAttr('hidden');
+                patientList();
             }
         },
         error: function(jqXHR, status) {
@@ -77,4 +63,53 @@ if (token != null) {
 
 } else {
     window.location.href = "../login/userLogin.html";
+}
+
+
+// get all patient checkup record
+function patientList(){
+    $.ajax({
+        url: 'http://localhost:3000/patient/checkupList/'+id,
+        method: 'get',
+        dataType: 'json',
+        headers: { authorization: 'Bearer ' + window.localStorage.getItem('token') },
+        success: function(result, status) {
+            $('#patientCheckListTable').empty();
+            // console.log(result.allUser[0]);
+            for (key in result.allUser) {
+                    $('#patientCheckListTable').append('<tr><td>' + result.allUser[key].id + '</td>\
+                                  <td class="text-primary">' + result.allUser[key].blood_pressure + '</td>\
+                                  <td>\
+                                     ' + result.allUser[key].body_temperature + '\
+                                  </td>\
+                                  <td>\
+                                     ' + result.allUser[key].sugar_level + '\
+                                  </td>\
+                                  <td>\
+                                     ' + result.allUser[key].bmi + '\
+                                  </td>\
+                                  <td>\
+                                    ' + result.allUser[key].cholesterol_level + '\
+                                  </td>\
+                                  <td>\
+                                    ' + result.allUser[key].prescription + '\
+                                  </td>\
+                                  <td>\
+                                    ' + result.allUser[key].description + '\
+                                  </td>\
+                                  <td>\
+                                    ' + result.allUser[key].createdAt + '\
+                                  </td>\
+                                </tr>');
+
+            }
+        },
+        error: function(jqXHR, status) {
+            console.log(jqXHR);
+            // console.log(jqXHR.status);
+            // console.log(jqXHR.responseJSON.message);
+            console.log(status);
+            // alert(jqXHR.responseJSON.message);
+        }
+    });
 }

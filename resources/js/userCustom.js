@@ -201,7 +201,7 @@ $(document).ready(function() {
                 window.sessionStorage.setItem('user_updatedAt', result.info.updatedAt);
                 // var ses = window.sessionStorage.getItem('token');
                 // sessionStorage.clear();
-                window.location.href = "../user/dashboard.html";
+                window.location.href = "../user/user.html";
             },
             error: function(jqXHR, status) {
                 // console.log(jqXHR.responseJSON.message);
@@ -326,7 +326,24 @@ $(document).ready(function() {
 $(document).ready(function() {
     $(document).on('click', '.openmodalclick', function(event) {
         event.preventDefault();
+        var id = $(this).attr('data-id');
+        var name = $(this).attr('data-name');
+        $('#editBloodPressure').removeAttr('data-id');
+        $('#editBloodPressure').attr('data-id', id);
+        $('#editBloodPressure').attr('data-name', name);
         $('#myModal').modal('toggle');
+
+    });
+});
+
+// open doctor modal in table list
+$(document).ready(function() {
+    $(document).on('click', '.openmodalclickk', function(event) {
+        event.preventDefault();
+        var id = $(this).attr('data-id');
+        $('#editPrescription').removeAttr('data-id');
+        $('#editPrescription').attr('data-id', id);
+        $('#myModall').modal('toggle');
 
     });
 });
@@ -383,22 +400,23 @@ $(document).on('keyup', '#patieltListSearchBar', function(event) {
             success: function(result, status) {
                 $('#patientListTable').empty();
                 for (key in result.allUser) {
-                // console.log(result[key].userName);
-                // console.log(result.allUser[key].dob);
-                var date = result.allUser[key].dob;
-                var arr1 = date.split('-');
-                var arr2 = arr1[1].split(' ');
-                var arr3 = arr1[2].split(' ');
-                var dob = arr1[0] + ', ' + arr2 + ', ' + arr3;
+                    if (result.allUser[key].user_type == 'patient') {
+                        // console.log(result[key].userName);
+                        // console.log(result.allUser[key].dob);
+                        var date = result.allUser[key].dob;
+                        var arr1 = date.split('-');
+                        var arr2 = arr1[1].split(' ');
+                        var arr3 = arr1[2].split(' ');
+                        var dob = arr1[0] + ', ' + arr2 + ', ' + arr3;
 
-                function calculate_age(dob) {
-                    var diff_ms = Date.now() - dob.getTime();
-                    var age_dt = new Date(diff_ms);
-                    return Math.abs(age_dt.getUTCFullYear() - 1970);
-                }
-                var datee = calculate_age(new Date(1998, 9, 23))
-                // console.log(datee);
-                $('#patientListTable').append('<tr class="openmodalclick"><td>' + result.allUser[key].id + '</td>\
+                        function calculate_age(dob) {
+                            var diff_ms = Date.now() - dob.getTime();
+                            var age_dt = new Date(diff_ms);
+                            return Math.abs(age_dt.getUTCFullYear() - 1970);
+                        }
+                        var datee = calculate_age(new Date(1998, 9, 23))
+                        // console.log(datee);
+                        $('#patientListTable').append('<tr class="openmodalclick" data-name="'+result.allUser[key].first_name+' '+result.allUser[key].middle_name+' '+result.allUser[key].last_name+'" data-id="'+result.allUser[key].id+'"><td>' + result.allUser[key].id + '</td>\
                                   <td class="text-primary">' + result.allUser[key].first_name + ' ' + result.allUser[key].middle_name + ' ' + result.allUser[key].last_name + '</td>\
                                   <td>\
                                      ' + result.allUser[key].email + '\
@@ -416,7 +434,8 @@ $(document).on('keyup', '#patieltListSearchBar', function(event) {
                                     ' + result.allUser[key].gender + '\
                                   </td>\
                                 </tr>');
-            }
+                    }
+                }
             },
             error: function(jqXHR, status) {
                 console.log(jqXHR.responseJSON.message);
@@ -424,13 +443,12 @@ $(document).on('keyup', '#patieltListSearchBar', function(event) {
                 // alert(jqXHR.responseJSON.message);
             }
         });
-    }
-    else{
+    } else {
         getallpatientlistt();
     }
 });
 
-function getallpatientlistt(){
+function getallpatientlistt() {
     // get all userlist
     $.ajax({
         url: 'http://localhost:3000/user/list',
@@ -441,22 +459,23 @@ function getallpatientlistt(){
             $('#patientListTable').empty();
             // console.log(result.allUser[0]);
             for (key in result.allUser) {
-                // console.log(result[key].userName);
-                // console.log(result.allUser[key].dob);
-                var date = result.allUser[key].dob;
-                var arr1 = date.split('-');
-                var arr2 = arr1[1].split(' ');
-                var arr3 = arr1[2].split(' ');
-                var dob = arr1[0] + ', ' + arr2 + ', ' + arr3;
+                if (result.allUser[key].user_type == 'patient') {
+                    // console.log(result[key].userName);
+                    // console.log(result.allUser[key].dob);
+                    var date = result.allUser[key].dob;
+                    var arr1 = date.split('-');
+                    var arr2 = arr1[1].split(' ');
+                    var arr3 = arr1[2].split(' ');
+                    var dob = arr1[0] + ', ' + arr2 + ', ' + arr3;
 
-                function calculate_age(dob) {
-                    var diff_ms = Date.now() - dob.getTime();
-                    var age_dt = new Date(diff_ms);
-                    return Math.abs(age_dt.getUTCFullYear() - 1970);
-                }
-                var datee = calculate_age(new Date(1998, 9, 23))
-                // console.log(datee);
-                $('#patientListTable').append('<tr class="openmodalclick"><td>' + result.allUser[key].id + '</td>\
+                    function calculate_age(dob) {
+                        var diff_ms = Date.now() - dob.getTime();
+                        var age_dt = new Date(diff_ms);
+                        return Math.abs(age_dt.getUTCFullYear() - 1970);
+                    }
+                    var datee = calculate_age(new Date(1998, 9, 23))
+                    // console.log(datee);
+                    $('#patientListTable').append('<tr class="openmodalclick" data-name="' + result.allUser[key].first_name + ' ' + result.allUser[key].middle_name + ' ' + result.allUser[key].last_name + '" data-id="'+result.allUser[key].id+'"><td>' + result.allUser[key].id + '</td>\
                                   <td class="text-primary">' + result.allUser[key].first_name + ' ' + result.allUser[key].middle_name + ' ' + result.allUser[key].last_name + '</td>\
                                   <td>\
                                      ' + result.allUser[key].email + '\
@@ -474,6 +493,7 @@ function getallpatientlistt(){
                                     ' + result.allUser[key].gender + '\
                                   </td>\
                                 </tr>');
+                }
             }
         },
         error: function(jqXHR, status) {
@@ -485,3 +505,69 @@ function getallpatientlistt(){
         }
     });
 }
+
+
+// Checkup Form Nurse submit
+$(document).ready(function() {
+    $(document).on('submit', '#CheckupFormNurse', function(event) {
+        event.preventDefault();
+        var userProfileEditFormData = {
+            // key         value
+            BloodPressure: $('#editBloodPressure').val(),
+            Temperature: $('#editBodyTemperature').val(),
+            Sugar: $('#editBloodGroup').val(),
+            BMI: $('#editBodyMassIndex').val(),
+            Cholesterol: $('#editCholesterolLevel').val(),
+            Id: $('#editBloodPressure').attr('data-id'),
+            Name: $('#editBloodPressure').attr('data-name')
+        }
+        // console.log(userProfileEditFormData);
+        $.ajax({
+            url: 'http://localhost:3000/user/checkup/nurse',
+            method: 'post',
+            contentType: 'application/json',
+            headers: { authorization: 'Bearer ' + window.localStorage.getItem('token') },
+            data: JSON.stringify(userProfileEditFormData),
+            success: function(result, status) {
+                console.log(result.status);
+                alert(result.message);
+                window.location.href = "./tables.html";
+            },
+            error: function(jqXHR, status) {
+                console.log(jqXHR.responseJSON.message);
+                console.log(status);
+            }
+        });
+    });
+});
+
+
+// Checkup Form Doctor submit
+$(document).ready(function() {
+    $(document).on('submit', '#CheckupFormDoctor', function(event) {
+        event.preventDefault();
+        var userProfileEditFormData = {
+            // key         value
+            Prescription: $('#editPrescription').val(),
+            Description: $('#editDescription').val(),
+            Id: $('#editPrescription').attr('data-id'),
+        }
+        // console.log(userProfileEditFormData);
+        $.ajax({
+            url: 'http://localhost:3000/user/checkup/doctor',
+            method: 'put',
+            contentType: 'application/json',
+            headers: { authorization: 'Bearer ' + window.localStorage.getItem('token') },
+            data: JSON.stringify(userProfileEditFormData),
+            success: function(result, status) {
+                console.log(result.status);
+                alert(result.message);
+                window.location.href = "./tables.html";
+            },
+            error: function(jqXHR, status) {
+                console.log(jqXHR.responseJSON.message);
+                console.log(status);
+            }
+        });
+    });
+});

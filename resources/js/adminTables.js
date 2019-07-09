@@ -64,6 +64,9 @@ if (token != null) {
                                   <td>\
                                     ' + result.allUser[key].gender + '\
                                   </td>\
+                                  <td>\
+                                    <button data-id="'+result.allUser[key].id+'" class="btn btn-danger deleteUser" type="button">Delete</button>\
+                                  </td>\
                                 </tr>');
             }
         },
@@ -117,6 +120,9 @@ if (token != null) {
                                   <td>\
                                     ' + result.allUser[key].gender + '\
                                   </td>\
+                                  <td>\
+                                    <button data-id="'+result.allUser[key].id+'" class="btn btn-danger deleteUser" type="button">Delete</button>\
+                                  </td>\
                                 </tr>');
             }
         },
@@ -169,6 +175,9 @@ if (token != null) {
                                   </td>\
                                   <td>\
                                     ' + result.allUser[key].gender + '\
+                                  </td>\
+                                  <td>\
+                                    <button data-id="'+result.allUser[key].id+'" class="btn btn-danger deleteUser" type="button">Delete</button>\
                                   </td>\
                                 </tr>');
             }

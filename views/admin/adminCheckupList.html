@@ -17,8 +17,8 @@
     <link href="../../resources/dashboard/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../../resources/dashboard/demo/demo.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <link href="../../resources/css/userCustom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 </head>
 
 <body class="">
@@ -36,32 +36,32 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
+                    <li class="nav-item  ">
+                        <a class="nav-link" href="./adminDashboard.html">
+                            <i class="material-icons">dashboard</i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./user.html">
+                        <a class="nav-link" href="./addUser.html">
                             <i class="material-icons">person</i>
-                            <p>User Profile</p>
+                            <p>Add User</p>
                         </a>
                     </li>
-                    <li id="tableList" class="nav-item active">
-                        <a class="nav-link" href="./tables.html">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./adminTables.html">
                             <i class="material-icons">content_paste</i>
-                            <p>Checkup</p>
+                            <p>User List</p>
                         </a>
                     </li>
-                    <li id="PatientCheckuppList" class="nav-item" hidden>
-                        <a class="nav-link" href="./patientRecord.html">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./adminCheckupList.html">
                             <i class="material-icons">content_paste</i>
-                            <p>Patient record</p>
-                        </a>
-                    </li>
-                    <li id="checkupRecords" class="nav-item" hidden>
-                        <a class="nav-link" href="./checkupRecords.html">
-                            <i class="material-icons">content_paste</i>
-                            <p>All Checkup Records</p>
+                            <p>Checkup Lists</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./map.html">
+                        <a class="nav-link" href="./adminMaps.html">
                             <i class="material-icons">location_ons</i>
                             <p>Maps</p>
                         </a>
@@ -74,7 +74,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">Table List</a>
+                        <a class="navbar-brand" href="#pablo">User Lists</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -84,13 +84,13 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-end">
                         <form class="navbar-form">
-                            <!--  <div class="input-group no-border">
+                            <div class="input-group no-border">
                                 <input type="text" value="" class="form-control" placeholder="Search...">
                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                     <i class="material-icons">search</i>
                                     <div class="ripple-container"></div>
                                 </button>
-                            </div> -->
+                            </div>
                         </form>
                         <ul class="navbar-nav">
                             <li class="nav-item">
@@ -144,43 +144,13 @@
                                 <div class="card-header card-header-primary">
                                     <h4 class="card-title ">Patient List</h4>
                                     <p class="card-category"> Here is a list of patient</p>
-                                    <div id="nurseSearchBar" class="input-group no-border float-right patientlistsearchbar">
-                                        <input id="patieltListSearchBar" type="text" value="" class="form-control" placeholder="Search by name">
-                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                            <i class="material-icons">search</i>
-                                            <div class="ripple-container"></div>
-                                        </button>
-                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-hover">
-                                            <thead id="navnurse" hidden class=" text-primary">
+                                            <thead class=" text-primary">
                                                 <th>
                                                     ID
-                                                </th>
-                                                <th>
-                                                    Name
-                                                </th>
-                                                <th>
-                                                    Email
-                                                </th>
-                                                <th>
-                                                    Address
-                                                </th>
-                                                <th>
-                                                    Phone
-                                                </th>
-                                                <th>
-                                                    Age
-                                                </th>
-                                                <th>
-                                                    Gender
-                                                </th>
-                                            </thead>
-                                            <thead id="vandoctor" class=" text-primary" hidden>
-                                                <th>
-                                                    Patient ID
                                                 </th>
                                                 <th>
                                                     Name
@@ -189,7 +159,7 @@
                                                     BP
                                                 </th>
                                                 <th>
-                                                    Temperature
+                                                    Body Temp
                                                 </th>
                                                 <th>
                                                     Sugar
@@ -201,10 +171,19 @@
                                                     Cholesterol
                                                 </th>
                                                 <th>
-                                                    Date & Time
+                                                    Prescription
+                                                </th>
+                                                <th>
+                                                    Description
+                                                </th>
+                                                <th>
+                                                    Checked at
+                                                </th>
+                                                <th>
+                                                    Action
                                                 </th>
                                             </thead>
-                                            <tbody id="patientListTable">
+                                            <tbody id="patientCheckupListTable">
                                                 <!-- user info list -->
                                             </tbody>
                                         </table>
@@ -260,103 +239,79 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Patient current status</h4>
+                    <h4 class="modal-title">Profile</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Enter Details</h4>
-                            <p class="card-category">Enter Patient current checkup details</p>
+                            <h4 class="card-title">Profile</h4>
+                            <p class="card-category">User Profile</p>
                         </div>
                         <div class="card-body">
-                            <form id="CheckupFormNurse" enctype="multipart/form-data" method="POST">
+                            <form id="EditUserProfileFormText" enctype="multipart/form-data" method="PUT">
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <div class="form-group bmd-form-group is-filled">
-                                            <label class="bmd-label-floating">Blood Pressure</label>
-                                            <input type="text" id="editBloodPressure" class="form-control no-border" required>
+                                        <div class="form-group">
+                                            <label class="">First Name</label>
+                                            <input type="text" id="editUserFirstName" class="form-control" required disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="form-group bmd-form-group">
-                                            <label class="bmd-label-floating">Body Temperature
-                                            </label>
-                                            <input id="editBodyTemperature" type="number" class="form-control no-border" required>
+                                        <div class="form-group">
+                                            <label class="">Middle Name</label>
+                                            <input id="editUserMiddleName" type="text" class="form-control disabled" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="form-group bmd-form-group is-filled">
-                                            <label class="bmd-label-floating">Sugar Level
-                                            </label>
-                                            <input id="editBloodGroup" type="text" class="form-control no-border" required>
+                                        <div class="form-group">
+                                            <label class="">Last Name</label>
+                                            <input id="editUserLastName" type="text" class="form-control" required disabled>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group bmd-form-group is-filled">
-                                            <label class="bmd-label-floating">Body Mass Index</label>
-                                            <input id="editBodyMassIndex" type="number" class="form-control no-border" required>
+                                        <div class="form-group">
+                                            <label class="">Email</label>
+                                            <input id="editUserEmail" type="email" class="form-control" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group bmd-form-group is-filled">
-                                            <label class="bmd-label-floating">Cholesterol Level</label>
-                                            <input id="editCholesterolLevel" type="number" class="form-control no-border" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-success pull-right">Submit</button>
-                                <div class="clearfix"></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- modal -->
-    <!-- The Modal -->
-    <div class="modal fade" id="myModall">
-        <div class="modal-dialog modal-lg ">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Patient current status</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div class="card">
-                        <div class="card-header card-header-primary">
-                            <h4 class="card-title">Enter Details</h4>
-                            <p class="card-category">Enter Patient current checkup details</p>
-                        </div>
-                        <div class="card-body">
-                            <form id="CheckupFormDoctor" enctype="multipart/form-data" method="PUT">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group bmd-form-group is-filled">
-                                            <label class="bmd-label-floating">Prescription</label>
-                                            <input id="editPrescription" rows="6" cols="50" class="form-control no-border " required>
+                                        <div class="form-group">
+                                            <label class="">Phone</label>
+                                            <input id="editUserPhone" type="text" class="form-control" required disabled>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group bmd-form-group is-filled">
-                                            <label class="bmd-label-floating">Description</label>
-                                            <input type="textarea" id="editDescription" class="form-control long-text" required>
+                                        <div class="form-group">
+                                            <label class="">Address</label>
+                                            <input id="editUserAddress" type="text" class="form-control" required disabled>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success pull-right">Submit</button>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="">Gender</label>
+                                            <input id="editUserGender" type="text" class="form-control" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="">Date of Birth</label>
+                                            <input id="editUserDob" type="text" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" required disabled>
+                                        </div>
+                                    </div>
+                                    <div id="profilepictureedit" class="col-md-4">
+                                        <div class="form-group">
+                                            <img id="editPhoto" src="">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="clearfix"></div>
                             </form>
                         </div>
@@ -586,8 +541,8 @@
     <!-- For modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="../../resources/js/userCustom.js"></script>
-    <script src="../../resources/js/userListCustom.js"></script>
+    <script src="../../resources/js/adminCustom.js"></script>
+    <script src="../../resources/js/adminCheckupList.js"></script>
 </body>
 
 </html>
